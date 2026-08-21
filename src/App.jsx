@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Layout } from './components/Layout';
 import Home from './pages/Home';
 import Exams from './pages/Exams';
+import Admin from './pages/Admin';
 import { About, GeneralQA, ListingPage, NotFound, Resources, Search, SubjectDetail, Subjects } from './pages/ContentPages';
 
 function route(path){
@@ -18,4 +19,4 @@ function route(path){
   if(path==='/about')return <About/>;
   return <NotFound/>;
 }
-export default function App(){const [path,setPath]=useState(location.pathname);useEffect(()=>{const fn=()=>setPath(location.pathname);addEventListener('popstate',fn);return()=>removeEventListener('popstate',fn)},[]);useEffect(()=>{document.title=`${path==='/'?'الرئيسية':'السادس الإعدادي'} | السادس الإعدادي`},[path]);return <Layout path={path}>{route(path)}</Layout>}
+export default function App(){const [path,setPath]=useState(location.pathname);useEffect(()=>{const fn=()=>setPath(location.pathname);addEventListener('popstate',fn);return()=>removeEventListener('popstate',fn)},[]);useEffect(()=>{document.title=`${path==='/admin'?'إدارة المحتوى':path==='/'?'الرئيسية':'السادس الإعدادي'} | السادس الإعدادي`},[path]);if(path==='/admin')return <Admin/>;return <Layout path={path}>{route(path)}</Layout>}

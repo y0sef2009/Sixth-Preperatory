@@ -10,10 +10,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.3",
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
     "@eslint/js": "latest",
