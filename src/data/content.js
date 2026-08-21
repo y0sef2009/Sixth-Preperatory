@@ -1,16 +1,17 @@
 export const subjects = [
-  { id: 'math', name: 'الرياضيات', icon: '∑', color: '#4d65d8', description: 'مساحة مخصصة لتنظيم فصول الرياضيات وموادها.' },
-  { id: 'physics', name: 'الفيزياء', icon: '⚛', color: '#397ca3', description: 'مساحة مخصصة لتنظيم فصول الفيزياء وموادها.' },
-  { id: 'chemistry', name: 'الكيمياء', icon: '⌬', color: '#7657a8', description: 'مساحة مخصصة لتنظيم فصول الكيمياء وموادها.' },
-  { id: 'biology', name: 'الأحياء', icon: '⌁', color: '#3b8968', description: 'مساحة مخصصة لتنظيم فصول الأحياء وموادها.' },
-  { id: 'arabic', name: 'اللغة العربية', icon: 'ض', color: '#bc714b', description: 'مساحة مخصصة لتنظيم فصول اللغة العربية وموادها.' },
-  { id: 'english', name: 'اللغة الإنجليزية', icon: 'En', color: '#36818b', description: 'مساحة مخصصة لتنظيم فصول اللغة الإنجليزية وموادها.' },
-  { id: 'islamic', name: 'التربية الإسلامية', icon: '◈', color: '#a57b2d', description: 'مساحة مخصصة لتنظيم فصول التربية الإسلامية وموادها.' },
+  { id: 'math', name: 'الرياضيات', icon: '∑', color: '#4d65d8', division: { singular: 'فصل', plural: 'فصول' }, description: 'مساحة مخصصة لتنظيم فصول الرياضيات وموادها.' },
+  { id: 'physics', name: 'الفيزياء', icon: '⚛', color: '#397ca3', division: { singular: 'فصل', plural: 'فصول' }, description: 'مساحة مخصصة لتنظيم فصول الفيزياء وموادها.' },
+  { id: 'chemistry', name: 'الكيمياء', icon: '⌬', color: '#7657a8', division: { singular: 'فصل', plural: 'فصول' }, description: 'مساحة مخصصة لتنظيم فصول الكيمياء وموادها.' },
+  { id: 'biology', name: 'الأحياء', icon: '⌁', color: '#3b8968', division: { singular: 'فصل', plural: 'فصول' }, description: 'مساحة مخصصة لتنظيم فصول الأحياء وموادها.' },
+  { id: 'arabic', name: 'اللغة العربية', icon: 'ض', color: '#bc714b', division: { singular: 'موضوع', plural: 'مواضيع' }, description: 'مساحة مخصصة لتنظيم مواضيع اللغة العربية وموادها.' },
+  { id: 'english', name: 'اللغة الإنجليزية', icon: 'En', color: '#36818b', division: { singular: 'وحدة', plural: 'وحدات' }, description: 'مساحة مخصصة لتنظيم وحدات اللغة الإنجليزية وموادها.' },
+  { id: 'french', name: 'اللغة الفرنسية', icon: 'Fr', color: '#536db3', division: { singular: 'موضوع', plural: 'مواضيع' }, description: 'مساحة مخصصة لتنظيم مواضيع اللغة الفرنسية وموادها.' },
+  { id: 'islamic', name: 'التربية الإسلامية', icon: '◈', color: '#a57b2d', division: { singular: 'وحدة', plural: 'وحدات' }, description: 'مساحة مخصصة لتنظيم وحدات التربية الإسلامية وموادها.' },
 ];
 
 // أضف الفصول لكل مادة هنا بشكل مستقل. لا تشترك المواد في بنية فصلية مفترضة.
 export const chaptersBySubject = {
-  math: [], physics: [], chemistry: [], biology: [], arabic: [], english: [], islamic: [],
+  math: [], physics: [], chemistry: [], biology: [], arabic: [], english: [], french: [], islamic: [],
 };
 
 export const contentStore = {

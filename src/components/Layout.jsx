@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Icon from './Icons';
 
-export const nav = [
+const nav = [
   ['/', 'الرئيسية'], ['/subjects', 'المواد الدراسية'], ['/summaries', 'الملخصات'], ['/ministry', 'الوزاريات'],
   ['/questions', 'الأسئلة'], ['/exams', 'الاختبارات'], ['/general-qa', 'الأسئلة العامة'], ['/resources', 'المصادر'], ['/about', 'حول الموقع'],
 ];
@@ -13,14 +13,13 @@ export function Link({ to, children, className='', onClick }) {
 
 export function Header({ path }) {
   const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(false), [path]);
   return <>
     <div className="topline"><div className="container">منصة تعليمية مجانية لطلبة السادس الإعدادي في العراق <span>• ليست جهة رسمية</span></div></div>
     <header className="header">
       <div className="container header-inner">
         <Link to="/" className="brand" aria-label="السادس الإعدادي - الرئيسية"><span className="brand-mark">سـ</span><span><strong>السادس الإعدادي</strong><small>خطوتك نحو تنظيم أفضل</small></span></Link>
         <nav className={`nav ${open ? 'is-open' : ''}`} aria-label="التنقل الرئيسي">
-          {nav.map(([to,label]) => <Link key={to} to={to} className={(path === to || (to !== '/' && path.startsWith(to))) ? 'active' : ''}>{label}</Link>)}
+          {nav.map(([to,label]) => <Link key={to} to={to} onClick={()=>setOpen(false)} className={(path === to || (to !== '/' && path.startsWith(to))) ? 'active' : ''}>{label}</Link>)}
         </nav>
         <div className="header-actions">
           <Link to="/search" className="icon-button" aria-label="البحث"><Icon name="search" /></Link>
