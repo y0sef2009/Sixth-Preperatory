@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sixth-preparatory-v3';
+const CACHE_NAME = 'sixth-preparatory-v4';
 const APP_SHELL = ['/', '/manifest.webmanifest', '/app-icon.svg', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', (event) => {
