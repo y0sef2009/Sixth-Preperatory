@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from './Icons';
 
 const nav = [
@@ -13,6 +13,27 @@ export function Link({ to, children, className='', onClick }) {
 
 export function Header({ path }) {
   const [open, setOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState(null);
+  const [installHelp, setInstallHelp] = useState(false);
+  const [installed, setInstalled] = useState(() => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true);
+
+  useEffect(() => {
+    const ready = (event) => { event.preventDefault(); setInstallPrompt(event); };
+    const done = () => { setInstalled(true); setInstallPrompt(null); };
+    window.addEventListener('beforeinstallprompt', ready);
+    window.addEventListener('appinstalled', done);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', ready);
+      window.removeEventListener('appinstalled', done);
+    };
+  }, []);
+
+  const install = async () => {
+    if (!installPrompt) { setInstallHelp(true); return; }
+    await installPrompt.prompt();
+    await installPrompt.userChoice;
+    setInstallPrompt(null);
+  };
   return <>
     <div className="topline"><div className="container">منصة تعليمية مجانية لطلبة السادس الإعدادي في العراق <span>• ليست جهة رسمية</span></div></div>
     <header className="header">
@@ -22,12 +43,14 @@ export function Header({ path }) {
           {nav.map(([to,label]) => <Link key={to} to={to} onClick={()=>setOpen(false)} className={(path === to || (to !== '/' && path.startsWith(to))) ? 'active' : ''}>{label}</Link>)}
         </nav>
         <div className="header-actions">
+          {!installed && <button className="install-button" onClick={install}>تثبيت التطبيق</button>}
           <Link to="/search" className="icon-button" aria-label="البحث"><Icon name="search" /></Link>
           <button className="icon-button mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open?'إغلاق القائمة':'فتح القائمة'}><Icon name={open?'close':'menu'} /></button>
         </div>
       </div>
     </header>
     {open && <button className="nav-backdrop" aria-label="إغلاق القائمة" onClick={()=>setOpen(false)} />}
+    {installHelp && <div className="modal-backdrop" role="presentation" onClick={()=>setInstallHelp(false)}><div className="install-modal" role="dialog" aria-modal="true" aria-labelledby="install-title" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setInstallHelp(false)} aria-label="إغلاق"><Icon name="close" size={19}/></button><img src="/app-icon.svg" alt="أيقونة تطبيق السادس"/><h2 id="install-title">تثبيت تطبيق السادس</h2><p>على iPhone افتح قائمة المشاركة في Safari ثم اختر «إضافة إلى الشاشة الرئيسية».</p><p>على Android افتح قائمة المتصفح ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».</p><button className="button secondary wide" onClick={()=>setInstallHelp(false)}>فهمت</button></div></div>}
   </>;
 }
 
