@@ -38,7 +38,7 @@ export function Header({ path }) {
     <div className="topline"><div className="container">منصة تعليمية مجانية لطلبة السادس الإعدادي في العراق <span>• ليست جهة رسمية</span></div></div>
     <header className="header">
       <div className="container header-inner">
-        <Link to="/" className="brand" aria-label="السادس الإعدادي - الرئيسية"><span className="brand-mark">سـ</span><span><strong>السادس الإعدادي</strong><small>خطوتك نحو تنظيم أفضل</small></span></Link>
+        <Link to="/" className="brand" aria-label="السادس الإعدادي - الرئيسية"><img className="brand-mark" src="/app-icon.svg" alt=""/><span><strong>السادس الإعدادي</strong><small>خطوتك نحو تنظيم أفضل</small></span></Link>
         <nav className={`nav ${open ? 'is-open' : ''}`} aria-label="التنقل الرئيسي">
           {nav.map(([to,label]) => <Link key={to} to={to} onClick={()=>setOpen(false)} className={(path === to || (to !== '/' && path.startsWith(to))) ? 'active' : ''}>{label}</Link>)}
         </nav>
@@ -56,7 +56,7 @@ export function Header({ path }) {
 
 export function Footer() {
   return <footer className="footer"><div className="container footer-grid">
-    <div className="footer-intro"><div className="brand brand-light"><span className="brand-mark">سـ</span><span><strong>السادس الإعدادي</strong></span></div><p>مساحة تعليمية مجانية تساعد الطالب العراقي على الوصول إلى مواده بصورة مرتبة وواضحة.</p><small>منصة مستقلة وغير تابعة لوزارة التربية العراقية.</small></div>
+    <div className="footer-intro"><div className="brand brand-light"><img className="brand-mark" src="/app-icon.svg" alt=""/><span><strong>السادس الإعدادي</strong></span></div><p>مساحة تعليمية مجانية تساعد الطالب العراقي على الوصول إلى مواده بصورة مرتبة وواضحة.</p><small>منصة مستقلة وغير تابعة لوزارة التربية العراقية.</small></div>
     <div><h3>استكشف</h3><Link to="/subjects">المواد الدراسية</Link><Link to="/summaries">الملخصات</Link><Link to="/ministry">الوزاريات</Link><Link to="/exams">الاختبارات</Link></div>
     <div><h3>المنصة</h3><Link to="/general-qa">الأسئلة العامة</Link><Link to="/resources">المصادر</Link><Link to="/search">البحث</Link><Link to="/about">حول الموقع</Link></div>
     <div><h3>تواصل</h3><span className="muted-link">قنوات التواصل — قريبًا</span><span className="muted-link">البريد الإلكتروني — قريبًا</span></div>
