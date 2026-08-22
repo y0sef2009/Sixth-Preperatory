@@ -10,7 +10,7 @@ export function useContent(type) {
     let active = true;
     const load = async () => {
       setLoading(true);
-      let query = supabase.from('content_items').select('*').eq('is_published', true).order('sort_order').order('created_at', { ascending: false });
+      let query = supabase.from('content_items').select('*').eq('is_published', true).order('created_at', { ascending: false });
       if (type) query = query.eq('type', type);
       const { data, error: requestError } = await query;
       if (!active) return;
