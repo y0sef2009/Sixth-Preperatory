@@ -329,9 +329,11 @@ export function GeneralQA() {
 
 export function Resources() {
   const { items, loading, error } = useContent("resource");
-  const subjectId = new URLSearchParams(location.search).get("subject") || "";
-  const bySubject = subjectId
-    ? items.filter((item) => item.subject_id === subjectId)
+  const initialSubject = new URLSearchParams(location.search).get("subject") || "";
+  const [subject, setSubject] = useState(initialSubject);
+  const selectedSubject = subjects.find((item) => item.id === subject);
+  const bySubject = subject
+    ? items.filter((item) => item.subject_id === subject)
     : items;
   return (
     <>
@@ -344,6 +346,18 @@ export function Resources() {
       </PageHero>
       <section className="section">
         <div className="container">
+          <div className="resource-filter">
+            <div>
+              <span className="eyebrow">اختيار المادة</span>
+              <h2>كتب المواد الدراسية</h2>
+              <p>اختر المادة لعرض الكتب الخاصة بها فقط.</p>
+            </div>
+            <SubjectSelect
+              value={subject}
+              onChange={(event) => setSubject(event.target.value)}
+              allLabel="جميع المواد"
+            />
+          </div>
           <div className="category-cards">
             <button type="button" className="active">
               <Icon name="book" />
@@ -352,14 +366,14 @@ export function Resources() {
             </button>
           </div>
           <div className="results-head">
-            <h2>الكتب</h2>
+            <h2>{selectedSubject ? `كتب ${selectedSubject.name}` : "جميع الكتب"}</h2>
             <span>{bySubject.length} كتاب</span>
           </div>
           <ContentGrid
             items={bySubject}
             loading={loading}
             error={error}
-            emptyText="لا توجد كتب منشورة حاليًا."
+            emptyText={selectedSubject ? `لا توجد كتب منشورة لمادة ${selectedSubject.name} حاليًا.` : "لا توجد كتب منشورة حاليًا."}
           />
         </div>
       </section>
