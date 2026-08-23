@@ -19,7 +19,6 @@ import {
 import { useContent } from "../hooks/useContent";
 
 export function Subjects() {
-  const { items: resources } = useContent("resource");
   return (
     <>
       <PageHero
@@ -33,13 +32,7 @@ export function Subjects() {
         <div className="container">
           <div className="subjects-grid">
             {subjects.map((s) => (
-              <SubjectCard
-                key={s.id}
-                subject={s}
-                resourceCount={
-                  resources.filter((item) => item.subject_id === s.id).length
-                }
-              />
+              <SubjectCard key={s.id} subject={s} />
             ))}
           </div>
         </div>
