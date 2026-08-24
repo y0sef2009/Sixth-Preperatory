@@ -79,7 +79,6 @@ export function SubjectDetail({ id }) {
             <Link to={`/summaries?subject=${id}`}>الملخصات</Link>
             <Link to={`/ministry?subject=${id}`}>الوزاريات</Link>
             <Link to={`/questions?subject=${id}`}>الأسئلة</Link>
-            <Link to={`/exams?subject=${id}`}>الاختبارات</Link>
             <Link to={`/resources?subject=${id}`}>المصادر</Link>
           </div>
           <div className="section-heading mini">
@@ -390,7 +389,6 @@ export function Search() {
     summaries: "summary",
     ministry: "ministry",
     questions: "question",
-    exams: "exam",
     resources: "resource",
     experiences: "experience",
   };
@@ -440,7 +438,6 @@ export function Search() {
               ["summaries", "الملخصات"],
               ["ministry", "الوزاريات"],
               ["questions", "الأسئلة"],
-              ["exams", "الاختبارات"],
               ["resources", "المصادر"],
               ["experiences", "التجارب"],
             ].map(([id, n]) => (
@@ -463,7 +460,7 @@ export function Search() {
           ) : (
             <EmptyState
               title="ابدأ بكتابة ما تبحث عنه"
-              text="يمكنك البحث في الملخصات والوزاريات والأسئلة والاختبارات والمصادر والتجارب."
+              text="يمكنك البحث في الملخصات والوزاريات والأسئلة والمصادر والتجارب."
               icon="search"
             />
           )}

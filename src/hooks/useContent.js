@@ -12,6 +12,7 @@ export function useContent(type) {
       setLoading(true);
       let query = supabase.from('content_items').select('*').eq('is_published', true).order('created_at', { ascending: false });
       if (type) query = query.eq('type', type);
+      else query = query.neq('type', 'exam');
       const { data, error: requestError } = await query;
       if (!active) return;
       setItems(data || []);

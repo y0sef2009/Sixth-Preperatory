@@ -8,7 +8,6 @@ const types = [
   ["summary", "ملخص"],
   ["ministry", "وزاريات"],
   ["question", "سؤال أكاديمي"],
-  ["exam", "اختبار"],
   ["resource", "مصدر"],
   ["experience", "سؤال أو تجربة عامة"],
 ];
@@ -52,7 +51,7 @@ export default function Admin() {
       .from("content_items")
       .select("*")
       .order("created_at", { ascending: false });
-    if (!error) setItems(data || []);
+    if (!error) setItems((data || []).filter((item) => item.type !== "exam"));
   };
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -86,9 +85,7 @@ export default function Admin() {
           ? "summaries"
           : form.type === "question"
             ? "questions"
-            : form.type === "exam"
-              ? "exams"
-              : form.type,
+            : form.type,
       )
     );
   }, [form.subject_id, form.type]);

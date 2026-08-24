@@ -63,7 +63,7 @@ export const subjects = [
     division: {
       singular: "وحدة",
       plural: "وحدات",
-      visibleIn: ["summaries", "questions", "exams"],
+      visibleIn: ["summaries", "questions"],
     },
     description: "مساحة مخصصة لتنظيم وحدات التربية الإسلامية وموادها.",
   },
@@ -161,7 +161,6 @@ export const contentStore = {
   summaries: [],
   ministryExams: [],
   questions: [],
-  practiceExams: [],
   resources: [],
   experiences: [],
 };

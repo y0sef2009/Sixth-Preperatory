@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Layout } from './components/Layout';
 import Home from './pages/Home';
-import Exams from './pages/Exams';
 import Admin from './pages/Admin';
 import { About, GeneralQA, ListingPage, NotFound, Resources, Search, SubjectDetail, Subjects } from './pages/ContentPages';
 
@@ -12,7 +11,6 @@ function route(path){
   if(path==='/summaries')return <ListingPage type="summaries"/>;
   if(path==='/ministry')return <ListingPage type="ministry"/>;
   if(path==='/questions')return <ListingPage type="questions"/>;
-  if(path==='/exams')return <Exams/>;
   if(path==='/general-qa')return <GeneralQA/>;
   if(path==='/resources')return <Resources/>;
   if(path==='/search')return <Search/>;

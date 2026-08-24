@@ -3,7 +3,7 @@ import Icon from './Icons';
 
 const nav = [
   ['/', 'الرئيسية'], ['/subjects', 'المواد الدراسية'], ['/summaries', 'الملخصات'], ['/ministry', 'الوزاريات'],
-  ['/questions', 'الأسئلة'], ['/exams', 'الاختبارات'], ['/general-qa', 'الأسئلة العامة'], ['/resources', 'المصادر'], ['/about', 'حول الموقع'],
+  ['/questions', 'الأسئلة'], ['/general-qa', 'الأسئلة العامة'], ['/resources', 'المصادر'], ['/about', 'حول الموقع'],
 ];
 
 export function Link({ to, children, className='', onClick }) {
@@ -57,7 +57,7 @@ export function Header({ path }) {
 export function Footer() {
   return <footer className="footer"><div className="container footer-grid">
     <div className="footer-intro"><div className="brand brand-light"><img className="brand-mark" src="/app-icon.svg" alt=""/><span><strong>السادس الإعدادي</strong></span></div><p>مساحة تعليمية مجانية تساعد الطالب العراقي على الوصول إلى مواده بصورة مرتبة وواضحة.</p><small>منصة مستقلة وغير تابعة لوزارة التربية العراقية.</small></div>
-    <div><h3>استكشف</h3><Link to="/subjects">المواد الدراسية</Link><Link to="/summaries">الملخصات</Link><Link to="/ministry">الوزاريات</Link><Link to="/exams">الاختبارات</Link></div>
+    <div><h3>استكشف</h3><Link to="/subjects">المواد الدراسية</Link><Link to="/summaries">الملخصات</Link><Link to="/ministry">الوزاريات</Link><Link to="/questions">الأسئلة</Link></div>
     <div><h3>المنصة</h3><Link to="/general-qa">الأسئلة العامة</Link><Link to="/resources">المصادر</Link><Link to="/search">البحث</Link><Link to="/about">حول الموقع</Link></div>
     <div><h3>تواصل</h3><span className="muted-link">قنوات التواصل — قريبًا</span><span className="muted-link">البريد الإلكتروني — قريبًا</span></div>
   </div><div className="container footer-bottom"><span>© {new Date().getFullYear()} السادس الإعدادي. جميع الحقوق محفوظة.</span><span>صُنع بعناية للطالب العراقي</span></div></footer>;

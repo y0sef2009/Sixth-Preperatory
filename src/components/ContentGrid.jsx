@@ -2,7 +2,7 @@ import Icon from './Icons';
 import { chaptersBySubject, subjects } from '../data/content';
 import { EmptyState } from './UI';
 
-const labels={summary:'ملخص',ministry:'وزاريات',question:'سؤال',exam:'اختبار',resource:'مصدر',experience:'تجربة عامة'};
+const labels={summary:'ملخص',ministry:'وزاريات',question:'سؤال',resource:'مصدر',experience:'تجربة عامة'};
 export default function ContentGrid({items,loading,error,emptyText='ستظهر المواد الحقيقية هنا بعد نشرها.'}){
   if(loading)return <div className="content-loading">جارٍ تحميل المحتوى…</div>;
   if(error)return <EmptyState title="تعذر تحميل المحتوى" text="تحقق من الاتصال ثم حاول تحديث الصفحة." icon="link"/>;
